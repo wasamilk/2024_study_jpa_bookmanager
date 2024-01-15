@@ -3,14 +3,16 @@ package com.wb.jpa.bookmanager.domain;
 import lombok.*;
 
 import java.time.LocalDateTime;
-
+/* ---- @Data ---- */
 @Setter
 @Getter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode
+/* --------------- */
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class User {
     @NonNull
     private String name;
