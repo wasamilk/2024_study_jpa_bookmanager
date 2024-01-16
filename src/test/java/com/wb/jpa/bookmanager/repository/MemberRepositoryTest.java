@@ -12,9 +12,9 @@ class MemberRepositoryTest {
 
     @Test
     void crud(){
-        memberRepository.save(new Member());
+//        memberRepository.save(new Member());
 
-        System.out.println(">> " + memberRepository.findAll());
+//        System.out.println(">> " + memberRepository.findAll());
         memberRepository.findAll().forEach(System.out::println);
     }
 }

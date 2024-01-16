@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 import java.time.LocalDateTime;
+
 /* ---- @Data ---- */
 //@Setter
 //@Getter
@@ -20,14 +21,14 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 public class Member {
-    @Id
-    @GeneratedValue
-    private Long id;
 
-//    @NonNull  --> RequiredArgsConstructor
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    //    @NonNull  --> RequiredArgsConstructor
     private String name;
     private String email;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }
