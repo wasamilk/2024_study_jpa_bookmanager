@@ -1,9 +1,14 @@
 package com.wb.jpa.bookmanager.repository;
 
 import com.wb.jpa.bookmanager.domain.Member;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 class MemberRepositoryTest {
@@ -12,9 +17,13 @@ class MemberRepositoryTest {
 
     @Test
     void crud(){
-//        memberRepository.save(new Member());
+        Member member1 = new Member("angela", "angela@wasamilk.com");
+        Member member2 = new Member("tomas", "tomas@wasamilk.com");
 
-//        System.out.println(">> " + memberRepository.findAll());
-        memberRepository.findAll().forEach(System.out::println);
+        memberRepository.saveAll(Lists.newArrayList(member1, member2));
+
+        List<Member> members
+                = memberRepository.findAll(Sort.by(Sort.Direction.DESC,"name"));
+        members.forEach(System.out::println);
     }
 }

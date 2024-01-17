@@ -1,34 +1,37 @@
 package com.wb.jpa.bookmanager.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
 
 /* ---- @Data ---- */
 //@Setter
 //@Getter
 //@ToString
-//@RequiredArgsConstructor
 //@EqualsAndHashCode
 /* --------------- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Builder
 @Entity
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_generator")
+    @SequenceGenerator(name = "member_generator", sequenceName = "member_seq", allocationSize = 1)
     private Long id;
-    //    @NonNull  --> RequiredArgsConstructor
+
+    @NonNull  //--> RequiredArgsConstructor
     private String name;
+
+    @NonNull
     private String email;
+
     private LocalDateTime createdAt;
+    
     private LocalDateTime updatedAt;
 
 }
