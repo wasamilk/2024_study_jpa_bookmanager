@@ -31,7 +31,7 @@ public class Member {
     private String email;
 
     private LocalDateTime createdAt;
-    
+
     private LocalDateTime updatedAt;
 
 }
