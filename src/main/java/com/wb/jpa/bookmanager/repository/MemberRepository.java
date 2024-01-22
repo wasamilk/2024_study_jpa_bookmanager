@@ -1,9 +1,13 @@
 package com.wb.jpa.bookmanager.repository;
 
 import com.wb.jpa.bookmanager.domain.Member;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -11,6 +15,7 @@ import java.util.Set;
 // JpaRepository<엔티티, 엔티티의 pk>
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
+    // basic 1 ----------------------------------------------------
     /** 쿼리메소드의 리턴값은 다양한 타입 가능 ex)Optional, Set, List... */
 //    Optional<Member> findByName(String name);
 //    Set<Member> findByName(String name);
@@ -32,4 +37,31 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     Member findTop1ByName(String name);
     List<Member> findFirst2ByName(String name);
     List<Member> findTop2ByName(String name);
+
+    // basic 2 ----------------------------------------------------
+    List<Member> findByEmailAndName(String email, String name);
+    List<Member> findByEmailOrName(String email, String name);
+
+    List<Member> findByCreatedAtAfter(LocalDateTime yesterday);
+    List<Member> findByIdAfter(Long id);
+    List<Member> findByCreatedAtGreaterThan(LocalDateTime yesterday);
+    List<Member> findByIdGreaterThanEqual(Long id);
+    List<Member> findByIdBetween(Long id1, Long id2);
+
+    List<Member> findByIdIsNotNull();
+//    List<Member> findByAddressIsNotEmpty();
+
+    List<Member> findByNameIn(List<String> names);
+
+    List<Member> findByNameLike(String name);
+    List<Member> findByNameStartingWith(String name);
+    List<Member> findByNameEndingWith(String name);
+    List<Member> findByNameContains(String name);
+
+    // sorting ----------------------------------------------------
+    List<Member> findTop1ByNameOrderByIdDescEmailAsc(String name);
+    List<Member> findFirstByName(String name, Sort sort);
+
+    // paging ----------------------------------------------------
+    Page<Member> findByName(String name, Pageable pageable);
 }

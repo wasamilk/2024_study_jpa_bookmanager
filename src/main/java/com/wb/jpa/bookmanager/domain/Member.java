@@ -3,6 +3,7 @@ package com.wb.jpa.bookmanager.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /* ---- @Data ---- */
 //@Setter
@@ -33,5 +34,8 @@ public class Member {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+//    @OneToMany(fetch = FetchType.EAGER)
+//    private List<Address> address;
 
 }
