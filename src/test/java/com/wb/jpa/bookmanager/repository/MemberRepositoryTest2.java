@@ -1,5 +1,6 @@
 package com.wb.jpa.bookmanager.repository;
 
+import com.wb.jpa.bookmanager.domain.Gender;
 import com.wb.jpa.bookmanager.domain.Member;
 import org.assertj.core.util.Lists;
 import org.hibernate.query.Order;
@@ -90,5 +91,31 @@ class MemberRepositoryTest2 {
     @Test
     void paging(){
         System.out.println("findByName >> " + memberRepository.findByName("martin", PageRequest.of(0,1,Sort.by(Sort.Direction.DESC, "id"))));
+    }
+
+    @Test
+    void insertAndUpdateTest(){
+        Member member = new Member();
+        member.setName("martin");
+        member.setEmail("martin2@wasamilk.com");
+
+        memberRepository.save(member);
+
+        Member member2 = memberRepository.findById(1L).orElseThrow(RuntimeException::new);
+        member2.setName("maaaaaaaaaaaartin");
+
+        memberRepository.save(member2);
+    }
+
+    @Test
+    void enumTest(){
+        Member member = memberRepository.findById(1L).orElseThrow(RuntimeException::new);
+        member.setGender(Gender.MALE);
+
+        memberRepository.save(member);
+
+        memberRepository.findAll().forEach(System.out::println);
+
+        System.out.println(memberRepository.findRawRecord().get("gender"));
     }
 }
