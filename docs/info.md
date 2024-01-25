@@ -145,3 +145,11 @@ public class BaseEntity {
     private LocalDateTime updatedAt;
 }
 ```
+
+
+### 엔티티 속성 타입 지정 시 주의사항
+-- wrapper타입 사용 시 기본값이 0이 아닌 null이므로 NPE 발생주의 필요
+```java
+private float averageReviewScore;  // average_review_score float(24) not null,
+private Float averageReviewScore;  // average_review_score float(24) ,
+```
