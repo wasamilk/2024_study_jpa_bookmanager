@@ -18,5 +18,13 @@ public class Book extends BaseEntity{
 
     private String name;
 
-    private String author;
+    private String category;
+
+    private Long authorId;
+
+    private Long publisherId;
+
+    @OneToOne(mappedBy = "book")
+    @ToString.Exclude
+    private BookReviewInfo bookReviewInfo;
 }
