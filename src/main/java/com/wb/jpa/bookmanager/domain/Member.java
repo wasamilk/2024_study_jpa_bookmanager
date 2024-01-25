@@ -20,7 +20,6 @@ import java.time.LocalDateTime;
 public class Member {
 
     @Id
-//    @GeneratedValue
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_generator")
     @SequenceGenerator(name = "member_generator", sequenceName = "member_seq", allocationSize = 1)
     private Long id;
@@ -38,10 +37,4 @@ public class Member {
 
     @Enumerated(value=EnumType.STRING)
     private Gender gender;
-
-    @Transient
-    private String testData;
-//    @OneToMany(fetch = FetchType.EAGER)
-//    private List<Address> address;
-
 }

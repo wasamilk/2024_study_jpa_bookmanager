@@ -45,7 +45,7 @@ class EntityListenerTest {
     void listenerTest2(){
         Book book = new Book();
         book.setName("테스트북");
-        book.setAuthor("이우빈");
+        book.setAuthorId(1L);
 
         bookRepository.save(book);
     }

@@ -18,4 +18,6 @@ public class MemberHistory extends BaseEntity{
 
     private String email;
 
+
+
 }
