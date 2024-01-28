@@ -63,28 +63,6 @@ public class CrawlingTest {
 		}
 
 
-		// 4. 파일저장
-        // 파일에 데이터 쓰기
-        String fileName = "output.csv";
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8"))) {
-            for (int i=0; i<movie_data.size(); i++) {
-            	writer.write((i+1)+";");
-            	writer.write(movie_data.get(i).getTitle()+";");
-                writer.write(movie_data.get(i).getStar()+";");
-                writer.write(movie_data.get(i).getLearning_time()+";");
-                writer.write(movie_data.get(i).getStart()+";");
-                writer.write(movie_data.get(i).getContent().replace("\n","」"));
-                writer.newLine();
-            }
-            String currentDir = System.getProperty("user.dir");
-            System.out.println("파일 저장 디렉토리: " + currentDir);
-            System.out.println("파일에 데이터를 성공적으로 저장했습니다.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-		// 5. WebDriver 종료
-		driver.quit();
-	}
 
 }
